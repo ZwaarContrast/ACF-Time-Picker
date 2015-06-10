@@ -12,7 +12,6 @@ Simple ACF field which provides a very basic HTML5 time picker field. Insert tim
 
 This ACF field type is compatible with:
 * ACF 5
-* ACF 4
 
 ### Installation
 
