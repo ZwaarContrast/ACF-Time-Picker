@@ -25,25 +25,10 @@ load_plugin_textdomain( 'acf-time_picker', false, dirname( plugin_basename(__FIL
 // $version = 5 and can be ignored until ACF6 exists
 function include_field_types_time_picker( $version ) {
 	
-	include_once('acf-time_picker-v5.php');
+	include_once('acf-time-picker-v5.php');
 	
 }
 
 add_action('acf/include_field_types', 'include_field_types_time_picker');	
-
-
-
-
-// 3. Include field type for ACF4
-function register_fields_time_picker() {
-	
-	include_once('acf-time_picker-v4.php');
-	
-}
-
-add_action('acf/register_fields', 'register_fields_time_picker');	
-
-
-
 	
 ?>

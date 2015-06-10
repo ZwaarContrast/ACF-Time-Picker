@@ -44,7 +44,6 @@ class acf_field_time_picker extends acf_field {
 		*/
 		
 		$this->defaults = array(
-			'font_size'	=> 14,
 		);
 		
 		
@@ -54,7 +53,6 @@ class acf_field_time_picker extends acf_field {
 		*/
 		
 		$this->l10n = array(
-			'error'	=> __('Error! Please enter a higher value', 'acf-time_picker'),
 		);
 		
 				
@@ -89,13 +87,13 @@ class acf_field_time_picker extends acf_field {
 		*  Please note that you must also have a matching $defaults value for the field name (font_size)
 		*/
 		
-		acf_render_field_setting( $field, array(
-			'label'			=> __('Font Size','acf-time_picker'),
-			'instructions'	=> __('Customise the input font size','acf-time_picker'),
-			'type'			=> 'number',
-			'name'			=> 'font_size',
-			'prepend'		=> 'px',
-		));
+		// acf_render_field_setting( $field, array(
+		// 	'label'			=> __('Font Size','acf-time_picker'),
+		// 	'instructions'	=> __('Customise the input font size','acf-time_picker'),
+		// 	'type'			=> 'number',
+		// 	'name'			=> 'font_size',
+		// 	'prepend'		=> 'px',
+		// ));
 
 	}
 	
@@ -118,23 +116,8 @@ class acf_field_time_picker extends acf_field {
 	
 	function render_field( $field ) {
 		
-		
-		/*
-		*  Review the data of $field.
-		*  This will show what data is available
-		*/
-		
-		echo '<pre>';
-			print_r( $field );
-		echo '</pre>';
-		
-		
-		/*
-		*  Create a simple text input using the 'font_size' setting.
-		*/
-		
 		?>
-		<input type="text" name="<?php echo esc_attr($field['name']) ?>" value="<?php echo esc_attr($field['value']) ?>" style="font-size:<?php echo $field['font_size'] ?>px;" />
+		<input type="time" name="<?php echo esc_attr($field['name']) ?>" value="<?php echo esc_attr($field['value']) ?>" />
 		<?php
 	}
 	
@@ -413,30 +396,23 @@ class acf_field_time_picker extends acf_field {
 	*  @return	$valid
 	*/
 	
-	/*
+	
 	
 	function validate_value( $valid, $value, $field, $input ){
 		
 		// Basic usage
-		if( $value < $field['custom_minimum_setting'] )
+		$test = DateTime::createFromFormat('d.m.Y H:i', "10.10.2010 " .$value);
+		if( !$test )
 		{
-			$valid = false;
+			$valid = __('The value for time should match H:i pattern (e.g. 13:30 or 01:05)','acf-time_picker');;
 		}
-		
-		
-		// Advanced usage
-		if( $value < $field['custom_minimum_setting'] )
-		{
-			$valid = __('The value is too little!','acf-time_picker'),
-		}
-		
 		
 		// return
 		return $valid;
 		
 	}
 	
-	*/
+	
 	
 	
 	/*

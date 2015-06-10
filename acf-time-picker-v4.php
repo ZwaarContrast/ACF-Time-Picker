@@ -69,28 +69,6 @@ class acf_field_time_picker extends acf_field {
 		
 		// Create Field Options HTML
 		?>
-<tr class="field_option field_option_<?php echo $this->name; ?>">
-	<td class="label">
-		<label><?php _e("Preview Size",'acf'); ?></label>
-		<p class="description"><?php _e("Thumbnail is advised",'acf'); ?></p>
-	</td>
-	<td>
-		<?php
-		
-		do_action('acf/create_field', array(
-			'type'		=>	'radio',
-			'name'		=>	'fields['.$key.'][preview_size]',
-			'value'		=>	$field['preview_size'],
-			'layout'	=>	'horizontal',
-			'choices'	=>	array(
-				'thumbnail' => __('Thumbnail'),
-				'something_else' => __('Something Else'),
-			)
-		));
-		
-		?>
-	</td>
-</tr>
 		<?php
 		
 	}
@@ -121,7 +99,7 @@ class acf_field_time_picker extends acf_field {
 		// create Field HTML
 		?>
 		<div>
-			
+			<input type="time" name="<?php echo esc_attr($field['name']) ?>" value="<?php echo esc_attr($field['value']) ?>" />
 		</div>
 		<?php
 	}
